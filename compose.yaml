@@ -1,0 +1,33 @@
+services:
+  app:
+    build:
+      context: .
+    image: ai-doc-assistant:local
+    container_name: ai-doc-assistant
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      FASTEMBED_CACHE_PATH: /app/model_cache
+      HF_ENDPOINT: https://hf-mirror.com
+      HF_HUB_ETAG_TIMEOUT: "120"
+      HF_HUB_DOWNLOAD_TIMEOUT: "120"
+    volumes:
+      - ./ai_doc_assistant.db:/app/ai_doc_assistant.db
+      - ./uploads:/app/uploads
+      - ./chroma_db:/app/chroma_db
+      - fastembed_cache:/app/model_cache
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  fastembed_cache:
