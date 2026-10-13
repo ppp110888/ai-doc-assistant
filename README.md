@@ -1,5 +1,7 @@
 # AI Doc Assistant
 
+[![Tests](https://github.com/ppp110888/ai-doc-assistant/actions/workflows/tests.yml/badge.svg)](https://github.com/ppp110888/ai-doc-assistant/actions/workflows/tests.yml)
+
 一个基于 FastAPI、DeepSeek 和 Chroma 构建的文档知识库问答后端。
 
 系统支持上传 TXT、PDF 和 DOCX 文档，完成文本提取、清洗、切分、向量化和语义检索，并让大模型根据检索结果生成带来源的回答。
