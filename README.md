@@ -170,7 +170,6 @@ python -m pytest -q
 
 ## 后续计划
 
-- 增加 Docker 部署
 - 切换 PostgreSQL
 - 增加检索相关性阈值
 - 增加文档删除和重新索引
